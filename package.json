@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/terabaud/redux-experiment.git"
   },
-  "author": "",
+  "author": "Lutz Rosema",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/terabaud/redux-experiment/issues"
@@ -36,5 +36,8 @@
     "tape": "^4.6.0",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.15.0"
+  },
+  "dependencies": {
+    "redux": "^3.5.2"
   }
 }

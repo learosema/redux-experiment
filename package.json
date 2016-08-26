@@ -4,8 +4,8 @@
   "description": "Getting into redux",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint src",
-    "test": "babel-tape-runner tests/**/*.js | faucet",
+    "lint": "eslint src tests",
+    "test": "npm run lint -s && babel-tape-runner tests/**/*.js | faucet",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
     "start": "webpack-dev-server --hot --inline --content-base build/"
   },

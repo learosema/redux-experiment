@@ -10,7 +10,8 @@ export default class BugsTableComponent {
 
 	get HTML() {
 		return `<table>
-			<tr><th>Bug description</th><th>assigned to</th><th>status</th><th>submitted on</th></tr>
+			<tr><th>Bug Title</th><th>assigned to</th>
+			<th>status</th><th>submitted on</th></tr>
 		</table>`;
 	}
 

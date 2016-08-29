@@ -1,7 +1,7 @@
 import store from '../store';
 
 // A simple example component, where you can add bugs
-export default class BugsFormComponent {
+export default class BugsAddComponent {
 
 	constructor(container) {
 		this.container = container;
@@ -9,7 +9,7 @@ export default class BugsFormComponent {
 	}
 
 	get HTML() {
-		return `<p><input placeholder="add bug"><button>add</button></p>`;
+		return `<button class="fileBug" title="file a new bug"> + </button>`;
 	}
 
 	render() {

@@ -1,6 +1,6 @@
 import store from '../store';
 
-// A simple example component, where you can add bugs
+// A simple example component for a bug detail view
 export default class BugsDetailComponent {
 
 	constructor(container) {

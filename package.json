@@ -38,6 +38,7 @@
     "webpack-dev-server": "^1.15.0"
   },
   "dependencies": {
+    "deepcopy": "^0.6.3",
     "redux": "^3.5.2"
   }
 }

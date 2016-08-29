@@ -1,0 +1,55 @@
+* {
+	box-sizing: border-box;
+}
+
+body { 
+	background: #134;
+	font-family: sans-serif;
+}
+
+@mixin fit {
+	position: absolute;
+	left: 0; right: 0; bottom: 0; top: 0;
+}
+
+#root {
+	@include fit;
+	background: #fff;
+	margin: 20px;
+}
+
+
+.bugs {
+	@include fit;
+	padding: 16px;
+
+	.bugs-table {
+
+		table {
+			border-collapse: collapse;
+			width: 100%;
+		}
+
+		th {
+				font-weight: normal;
+				text-align: left;
+				background: linear-gradient(0deg, #eee, #fff);
+			}
+
+		th { 
+			border: 1px solid #777;
+			padding: 4px;
+		}
+
+		th {
+			border: 1px solid #777;
+		}
+	}
+}
+
+@media screen and (min-width: 1600px) {
+	#root {
+			margin: 20px 300px;
+	}
+}
+

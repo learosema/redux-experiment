@@ -1,19 +1,9 @@
 import store from '../store';
 
 // A simple example component for a bug detail view
-export default class BugsDetailComponent {
+export default function bugsDetailView(bug) {
+	return `<h3>${bug.title}</h3>
 
-	constructor(container) {
-		this.container = container;
-		this.render();
-	}
-
-	get HTML() {
-		return `<h3>Detail view</h3>`;
-	}
-
-	render() {
-		this.container.innerHTML = this.HTML;
-	}
-
+	
+	`;
 }

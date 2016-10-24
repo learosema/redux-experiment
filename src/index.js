@@ -1,4 +1,4 @@
 import './styles.scss';
 import BugsApp  from './components/bugs';
 
-new BugsApp(document.getElementById("root"));
+export const app = new BugsApp(document.getElementById("root"));

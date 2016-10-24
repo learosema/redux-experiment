@@ -2,16 +2,24 @@ import deepcopy from 'deepcopy';
 
 const initialState = {
 	users: [{userName: "terabaud"}, {userName: "horst"}],
-	bugs: [{title: "It doesn't work"}]
+	bugs: [],
+	selectedIndex: -1
 };
 
 export default function reducer(state = initialState, action) {
 	// create a copy of the current state
 	const newState = deepcopy(state);
-	switch (action.type) {
-		case 'ADD_BUG': 
+	console.log("Action:", action);
+	const actions = {
+		"ADD_BUG": () => {
 			newState.bugs.push(action.bug);
-			return newState;
+		},
+		"SELECT_ROW": () => {
+			newState.selectedIndex = (action.index === state.selectedIndex) ? -1 : action.index;
+		}
+	};
+	if (action.type in actions) {
+		actions[action.type]();
 	}
+	return newState;
 }
-

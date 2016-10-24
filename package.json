@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint src tests",
     "test": "npm run lint -s && babel-tape-runner tests/**/*.js | faucet",
-    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+    "build": "webpack --config webpack.config.js",
     "start": "webpack-dev-server --hot --inline --content-base build/"
   },
   "repository": {
@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "deepcopy": "^0.6.3",
-    "redux": "^3.5.2"
+    "redux": "^3.5.2",
+    "virtual-dom": "^2.1.1"
   }
 }

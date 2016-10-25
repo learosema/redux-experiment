@@ -3,8 +3,9 @@
 }
 
 body { 
-	background: #eee;
+	background: #fdd;
 	font-family: sans-serif;
+	margin: 0;
 }
 
 @mixin fit {
@@ -15,7 +16,6 @@ body {
 #root {
 	@include fit;
 	background: #fff;
-	margin: 20px;
 }
 
 h1, h2 {
@@ -31,7 +31,7 @@ h1, h2 {
 
 button.bugs-add {
 	font-weight: 100;
-	position: absolute;
+	position: fixed;
 	right: 32px;
 	top: 32px;
 	width: 64px;
@@ -83,7 +83,7 @@ tr.selected {
 
 @media screen and (min-width: 1600px) {
 	#root {
-			margin: 20px 300px;
+			margin: 0 300px;
 	}
 }
 

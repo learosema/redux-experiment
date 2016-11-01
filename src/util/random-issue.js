@@ -34,18 +34,19 @@ function deliciousThing() {
 }
 
 
-export default function randomIssue() {
+export default function randomIssue(length = 1) {
 	return randomThing() + [
 		' throws ' + randomException(),
 		' fails to connect to ' + randomThing(),
 		' just refuses to work',
 		' causes ' + randomThing() + ' to crash'
-	].pick() + [
-		' on mondays',
-		' when you click the red button',
-		' when you try to save',
-		' because of ' + randomException(),
-		' on Windows 95',
-		' because terabaud is out of ' + deliciousThing()
-	].pick();
+	].pick() + (length > 1 ? (
+		[' because ', '. As a result of this, ', '. This is why ', '. Furthermore, ', '. Also, '].pick() + randomIssue(length-1)) :[
+		' on mondays.',
+		' when you click the red button.',
+		' when you try to save.',
+		' because of ' + randomException() + '.',
+		' on Windows 95.',
+		' because terabaud is out of ' + deliciousThing() + '.'
+	].pick());
 }

@@ -1,7 +1,7 @@
 import deepcopy from 'deepcopy';
 
 const initialState = {
-	users: [{userName: "terabaud"}, {userName: "horst"}],
+	userName: "terabaud",
 	bugs: [],
 	selectedIndex: -1
 };
@@ -16,6 +16,12 @@ export default function reducer(state = initialState, action) {
 		},
 		"SELECT_ROW": () => {
 			newState.selectedIndex = (action.index === state.selectedIndex) ? -1 : action.index;
+		},
+		"CLOSE_BUG": () => {
+
+		},
+		"FORM_SUBMIT": () => {
+			
 		}
 	};
 	if (action.type in actions) {

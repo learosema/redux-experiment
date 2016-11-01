@@ -4,27 +4,36 @@ import bugsAddButton from './bugs-add';
 import bugsDataGrid from './bugs-grid';
 import bugsDetailView from './bugs-detail';
 import randomIssue from '../util/random-issue';
+import { default as parser } from 'html2hscript';
+import { default as h } from 'virtual-dom/h';
+import { default as diff } from 'virtual-dom/diff';
+import { default as patch } from 'virtual-dom/patch'; 
+import { default as createElement } from 'virtual-dom/create-element';
 
 export default class BugsApp {
 
-	constructor(container) {
-		this.container = container;
-		console.log("BugsApp created!");
+	constructor() {
 		this.render();
 	}
 
 	registerEvents() {
-		$$('.bugs-add').map(b => b.addEventListener("click", (e) => {
+		$('.bugs-add').addEventListener("click", (e) => {
 			store.dispatch({
 				type: "ADD_BUG",
-				bug: {title: randomIssue(), state: "new", assignedTo: "terabaud", submitDate:"2016-10-24"}
+				bug: {
+					title: randomIssue(), 
+					state: "new", 
+					assignedTo: "terabaud", 
+					submitDate:new Date().toISOString(), 
+					description: randomIssue(10)}
 			});
 			this.render();
 			e.preventDefault();
-		}));
-		$$('table').map(t => t.addEventListener("click", (e) => {
+		});
+		$('.bugs-list').addEventListener("click", (e) => {
 			console.log("row click!");
-			const tr = e.target.nodeName === 'TD' ? e.target.parentNode : e.target;
+			const tr = e.target.nodeName === 'TD' ? 
+				e.target.parentNode : e.target;
 			if (tr.nodeName !== 'TR') {
 				return;
 			}
@@ -37,25 +46,36 @@ export default class BugsApp {
 				});
 				this.render();
 			}
-		}));
+		});
 	}
 
 	get HTML() {
-		return `
-			<div class="bugs">
-			<h2>Simple & stupid VanillaJS + Redux Bug Tracker</h2>
+		return `<div class="bugs">
+			<h2>VirtualDOM + Redux Bug <s>Tracker</s>Creator</h2>
 			${bugsAddButton()}
-			${bugsDataGrid(store.getState())}
 			${bugsDetailView(store.getState())}
-			</div>
-		`;
+			${bugsDataGrid(store.getState())}
+			</div>`;
 	}
 
 	render() {
-		const $bugs = $('.bugs');
-		const oldScrollTop = $bugs? $bugs.scrollTop : 0;
-		this.container.innerHTML = this.HTML;
-		this.registerEvents();
-		if ($bugs) $bugs.scrollTop = oldScrollTop;
+		window.h = h; // ugly hack; we can simply `eval` hyperscript now
+		if (! this.rootNode) {
+			// initial render
+			parser(this.HTML, (err, hsTree) => {
+				this.tree = eval(hsTree);
+				this.rootNode = createElement(this.tree);
+				document.body.appendChild(this.rootNode);
+			})
+			this.registerEvents();
+		} else {
+			// update render
+			parser(this.HTML, (err, hScriptNewTree) => {			
+				let newTree = eval(hScriptNewTree);
+				let patches = diff(this.tree, newTree);
+				this.rootNode = patch(this.rootNode, patches);
+				this.tree = newTree;
+			});
+		}
 	}
 }

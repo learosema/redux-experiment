@@ -3,10 +3,7 @@ import store from '../store';
 // A simple data grid
 export default function bugsDataGrid(state) {
 	const { bugs, selectedIndex } = state;
-	if (bugs.length === 0) {
-		return 'Yay, no bugs :-)';
-	}
-	return `<table>
+	return `<table class="bugs-list">
 		<tr><th>ID</th><th>Bug Title</th><th>assigned to</th>
 		<th>status</th><th>submitted on</th></tr>
 		${bugs.map((bug, index) => `
@@ -16,6 +13,7 @@ export default function bugsDataGrid(state) {
 			<td>${bug.assignedTo}</td>
 			<td>${bug.state}</td>
 			<td>${bug.submitDate}</td>
-		</tr>`).join('')}		
+		</tr>`).join('')}	
+		${bugs.length=== 0 ?'<tr><td colspan="5">Yay, no bugs :-)</td></tr>':''}
 	</table>`;
 }

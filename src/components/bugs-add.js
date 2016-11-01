@@ -1,4 +1,4 @@
 
 export default function bugsAddButton() {
-	return `<button class="bugs-add" title="file a new bug"> + </button>`;
+	return `<button class="bugs-add" title="create a random issue"> + </button>`;
 }

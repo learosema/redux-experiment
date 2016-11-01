@@ -12,7 +12,8 @@ module.exports = {
 	module: {
 		loaders: [
 			{ test: /(\.css|\.scss)$/, loaders: ['style', 'css?sourceMap', 'postcss', 'sass?sourceMap']},
-			{ test: /\.js$/, loader: 'babel', exclude: /(node_modules|bower_components)/, query: { cacheDirectory: true, presets: ['es2015']}}
+			{ test: /\.js$/, loader: 'babel', exclude: /(node_modules|bower_components)/, query: { cacheDirectory: true, presets: ['es2015']}},
+			{ test: /\.json$/, loader: "json-loader" }
 		]
 	},
 	postcss: function() { return [autoprefixer] }

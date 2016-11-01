@@ -59,7 +59,8 @@ export default class BugsApp {
 	}
 
 	render() {
-		window.h = h; // ugly hack; we can simply `eval` hyperscript now
+		// ugly hack, but we can simply `eval` hyperscript code
+		window.h = h; 
 		if (! this.rootNode) {
 			// initial render
 			parser(this.HTML, (err, hsTree) => {

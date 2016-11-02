@@ -33,8 +33,7 @@ function deliciousThing() {
 	return ['Oreos', 'coffee', 'ice cream', 'pizza'].pick();
 }
 
-
-export default function randomIssue(length = 1) {
+function randomIssue(length = 1) {
 	return randomThing() + [
 		' throws ' + randomException(),
 		' fails to connect to ' + randomThing(),
@@ -49,4 +48,21 @@ export default function randomIssue(length = 1) {
 		' on Windows 95.',
 		' because terabaud is out of ' + deliciousThing() + '.'
 	].pick());
+}
+
+function randomUser() {
+	return ["abigail", "baldrick","caitlin","daniel", "enola", "fred", "grace", "homer", "irene", "john", "kelly", "luke", "marge", "nate", "olivia", "vera"].pick() +
+		   ["_","."].pick() +
+		   ["miller", "smith", "baker", "doe", "simpson", "wood", "stone", "riker"].pick()
+}
+
+export default function createBug(id) {
+	return {
+		id: id,
+		title: randomIssue(), 
+		state: "new", 
+		assignedTo: randomUser(), 
+		submitDate: new Date().toISOString(), 
+		description: randomIssue(10)
+	}
 }

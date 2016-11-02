@@ -8,7 +8,7 @@ export default function bugsDataGrid(state) {
 		<th>status</th><th>submitted on</th></tr>
 		${bugs.map((bug, index) => `
 		<tr${index===selectedIndex?' class="selected"':''}>
-			<td>${index}</td>
+			<td>${bug.id}</td>
 			<td>${bug.title}</td>
 			<td>${bug.assignedTo}</td>
 			<td>${bug.state}</td>

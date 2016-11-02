@@ -1,4 +1,5 @@
 import deepcopy from 'deepcopy';
+import createBug from './util/random-issue';
 
 const initialState = {
 	userName: "terabaud",
@@ -16,11 +17,23 @@ export default function reducer(state = initialState, action) {
 	console.log("Action:", action);
 	const actions = {
 		"ADD_BUG": () => {
-			newState.bugs.splice(0, 0, action.bug);
+
+			newState.bugs.splice(0, 0, createBug(state.bugs.length));
 			newState.selectedIndex = 0;
 		},
+		"KEYBOARD_NAV": () => {
+			if (state.bugs.length > 1) {
+				newState.selectedIndex = state.selectedIndex + action.dir;
+				if (newState.selectedIndex < 0) {
+					newState.selectedIndex = state.bugs.length - 1
+				}  
+				if (newState.selectedIndex >= state.bugs.length) {
+					newState.selectedIndex = 0
+				}
+			}
+		},
 		"SELECT_ROW": () => {
-			newState.selectedIndex = (action.index === state.selectedIndex) ? -1 : action.index;
+			newState.selectedIndex = action.index;
 		},
 		"CLOSE_BUG": () => {
 

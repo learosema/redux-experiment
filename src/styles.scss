@@ -48,19 +48,19 @@ button.bugs-add {
 	line-height: 16px;
 	color: #fff;
 	background-color: #f00;
-	box-shadow: 2px 2px 10px 0 #700;
+	box-shadow: 2px 2px 10px 0 #000;
 	border: none;
 	cursor: pointer;
 	outline: none;
 
 	&:hover {
-		background: #faa;
-		box-shadow: 3px 3px 12px 0 #600;
+		background: #f33;
+		box-shadow: 3px 3px 14px 0 #000;
 	}
 
 	&:active {
-		background: #d55;
-		box-shadow: 1px 1px 8px 0 #900;
+		background: #a00;
+		box-shadow: 1px 1px 8px 0 #111;
 	}
 }
 

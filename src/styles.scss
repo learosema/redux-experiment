@@ -1,8 +1,12 @@
-
+$headlineColor: mintcream;
 $headerCellBackColor: mediumseagreen;
 $headerCellBackColor2: seagreen;
 $headerCellForeColor: white;
-$cellFocus: lightgoldenrodyellow;
+$cellFocus: #700;
+$cellFocus2: #533;
+$bgColor: #333;
+$fgColor: white;
+
 
 
 * {
@@ -10,7 +14,8 @@ $cellFocus: lightgoldenrodyellow;
 }
 
 body { 
-	background: #333;
+	background: $bgColor;
+	color: $fgColor;
 	font-family: sans-serif;
 	margin: 0;
 }
@@ -22,15 +27,13 @@ body {
 
 h1, h2 {
 	font-style: italic;
-	color: #777;
+	color: $headlineColor;
 }
 
 body > div {
 	@include fit;
 	padding: 16px;
 	overflow: auto;
-	background: #fff;
-	color: #333;
 }
 
 button.bugs-add {
@@ -87,7 +90,7 @@ th, td {
 }
 tr.selected {
 	background: $cellFocus; 
-	background: linear-gradient(0deg, $headerCellForeColor, $cellFocus);
+	background: linear-gradient(0deg, $cellFocus2, $cellFocus);
 }
 
 nav {
@@ -116,7 +119,8 @@ td > textarea {
 	font-size: 16px;
 	border: none;
 	outline: 0;
-	
+	background: $bgColor;
+	color: $fgColor;
 	&:focus {
 		box-shadow: 0 0 4px 0 $cellFocus;
 	}
@@ -125,7 +129,7 @@ td > textarea {
 
 @media screen and (min-width: 1600px) {
 	body > div {
-			margin: 0 300px;
+			margin: 0 100px;
 	}
 }
 

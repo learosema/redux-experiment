@@ -24,7 +24,7 @@ export default class BugsApp {
 					title: randomIssue(), 
 					state: "new", 
 					assignedTo: "terabaud", 
-					submitDate:new Date().toISOString(), 
+					submitDate: new Date().toISOString(), 
 					description: randomIssue(10)}
 			});
 			this.render();
@@ -63,16 +63,16 @@ export default class BugsApp {
 		window.h = h; 
 		if (! this.rootNode) {
 			// initial render
-			parser(this.HTML, (err, hsTree) => {
-				this.tree = eval(hsTree);
+			parser(this.HTML, (err, hyperScript) => {
+				this.tree = eval(hyperScript);
 				this.rootNode = createElement(this.tree);
 				document.body.appendChild(this.rootNode);
 			})
 			this.registerEvents();
 		} else {
 			// update render
-			parser(this.HTML, (err, hScriptNewTree) => {			
-				let newTree = eval(hScriptNewTree);
+			parser(this.HTML, (err, hyperScript) => {			
+				let newTree = eval(hyperScript);
 				let patches = diff(this.tree, newTree);
 				this.rootNode = patch(this.rootNode, patches);
 				this.tree = newTree;

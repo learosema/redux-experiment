@@ -62,7 +62,7 @@ export default function createBug(id) {
 		title: randomIssue(), 
 		state: "new", 
 		assignedTo: randomUser(), 
-		submitDate: new Date().toISOString(), 
+		submitDate: new Date(), 
 		description: randomIssue(10)
 	}
 }

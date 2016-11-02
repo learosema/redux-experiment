@@ -2,6 +2,7 @@ import { store } from '../store';
 import { $, $$ } from '../util/dollar';
 import ComponentBase from '../util/component-base';
 import bugsAddButton from './bugs-add';
+import bugsMenu from './bugs-menu';
 import bugsDataGrid from './bugs-grid';
 import bugsDetailView from './bugs-detail';
 
@@ -19,13 +20,16 @@ export default class BugsApp extends ComponentBase {
 			e.preventDefault();
 		});
 		$('.bugs-list').addEventListener("click", (e) => {
-			const tr = e.target.nodeName === 'TD' ? 
-				e.target.parentNode : e.target;
+			const tr = (e.target.nodeName === 'A') ? 
+				e.target.parentNode.parentNode :
+			    (e.target.nodeName === 'TD' ? 
+				e.target.parentNode : e.target);
 			if (tr.nodeName !== 'TR') {
 				return;
 			}
 			const rows = $$('tr', tr.parentNode);
 			const newIndex = (rows.indexOf(tr) - 1);
+			console.log(tr.id.slice(4)|0)
 			if (newIndex > -1) {
 				store.dispatch({
 					type: "SELECT_ROW",
@@ -34,7 +38,7 @@ export default class BugsApp extends ComponentBase {
 				this.render();
 			}
 		});
-		window.addEventListener("keyup", (e) => {
+			window.addEventListener("keyup", (e) => {
 			if (e.target.nodeName === "TEXTAREA" || 
 			    e.target.nodeName === "INPUT") {
 				return;
@@ -48,7 +52,7 @@ export default class BugsApp extends ComponentBase {
 
 	get HTML() {
 		return `<div class="bugs">
-			<h2>VirtualDOM + Redux Bug <s>Tracker</s>Creator</h2>
+			${bugsMenu()}
 			${bugsAddButton()}
 			${bugsDetailView(store.getState())}
 			${bugsDataGrid(store.getState())}

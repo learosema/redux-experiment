@@ -5,10 +5,12 @@ export default function bugsDetailView(state) {
 	const { bugs, selectedIndex } = state;
 	
 	const bug = selectedIndex < 0 ? {} : bugs[selectedIndex];
-	return `<p style="display: ${selectedIndex < 0 ? "none" : "block"}">
+	return `<div class="bugs-detail" style="display: ${selectedIndex < 0 ? "none" : "block"}">
+			
 			<form name="bugsForm">
-			<h3>#${selectedIndex}: ${bug.title}</h3>
 			<table>
+				<tr><td colspan="2"><h2>Issue # ${bug.id}</h2></td></tr>
+				<tr><th style="width: 10vw">Title:</th><td><input name="assignedTo" value="${bug.title}"></td></tr>
 				<tr><th><label>Assigned to:</label></th><td><input name="assignedTo" value="${bug.assignedTo}"></td></tr>
 				<tr><th>Status</th><td>${bug.state}</td></tr>
 				<tr><th>Description</th><td>
@@ -16,5 +18,5 @@ export default function bugsDetailView(state) {
 				</td></tr>
 			</table>
 			</form>
-		</p>`;
+		</div>`;
 }

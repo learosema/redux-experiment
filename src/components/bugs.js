@@ -15,8 +15,10 @@ export default class BugsApp extends ComponentBase {
 
 	registerEvents() {
 		$('.bugs-add').addEventListener("click", (e) => {
+			console.time();
 			store.dispatch({type: "ADD_BUG"});
 			this.render();
+			console.timeEnd();
 			e.preventDefault();
 		});
 		$('.bugs-list').addEventListener("click", (e) => {

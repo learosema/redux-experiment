@@ -25,10 +25,10 @@ export default function reducer(state = initialState, action) {
 			if (state.bugs.length > 1) {
 				newState.selectedIndex = state.selectedIndex + action.dir;
 				if (newState.selectedIndex < 0) {
-					newState.selectedIndex = state.bugs.length - 1
+					newState.selectedIndex = state.bugs.length - 1;
 				}  
 				if (newState.selectedIndex >= state.bugs.length) {
-					newState.selectedIndex = 0
+					newState.selectedIndex = 0;
 				}
 			}
 		},

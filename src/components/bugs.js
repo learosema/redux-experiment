@@ -31,7 +31,7 @@ export default class BugsApp extends ComponentBase {
 			}
 			const rows = $$('tr', tr.parentNode);
 			const newIndex = (rows.indexOf(tr) - 1);
-			console.log(tr.id.slice(4)|0)
+			console.log(tr.id.slice(4)|0);
 			if (newIndex > -1) {
 				store.dispatch({
 					type: "SELECT_ROW",
@@ -46,10 +46,10 @@ export default class BugsApp extends ComponentBase {
 				return;
 			}
 			if (e.keyCode === 38 || e.keyCode == 40) {
-				store.dispatch({type: "KEYBOARD_NAV", dir: -(39 - e.keyCode)})
+				store.dispatch({type: "KEYBOARD_NAV", dir: -(39 - e.keyCode)});
 			}
 			this.render();
-		})
+		});
 	}
 
 	get HTML() {

@@ -53,7 +53,7 @@ function randomIssue(length = 1) {
 function randomUser() {
 	return ["abigail", "baldrick","caitlin","daniel", "enola", "fred", "grace", "homer", "irene", "john", "kelly", "luke", "marge", "nate", "olivia", "vera"].pick() +
 		   ["_","."].pick() +
-		   ["miller", "smith", "baker", "doe", "simpson", "wood", "stone", "riker"].pick()
+		   ["miller", "smith", "baker", "doe", "simpson", "wood", "stone", "riker"].pick();
 }
 
 export default function createBug(id) {
@@ -64,5 +64,5 @@ export default function createBug(id) {
 		assignedTo: randomUser(), 
 		submitDate: new Date(), 
 		description: randomIssue(10)
-	}
+	};
 }

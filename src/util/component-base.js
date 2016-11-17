@@ -24,7 +24,7 @@ export default class ComponentBase {
 				this.tree = eval(hyperScript);
 				this.rootNode = createElement(this.tree);
 				document.body.appendChild(this.rootNode);
-			})
+			});
 			this.registerEvents();
 		} else {
 			// update render

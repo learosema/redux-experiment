@@ -7,7 +7,9 @@
     "lint": "eslint src tests",
     "test": "npm run lint -s && babel-tape-runner tests/**/*.js | faucet",
     "build": "webpack --config webpack.config.js",
-    "start": "webpack-dev-server --hot --inline --content-base build/"
+    "start": "webpack-dev-server --hot --inline --content-base build/",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -43,6 +45,8 @@
     "html2hscript": "^2.0.1",
     "json-loader": "^0.5.4",
     "redux": "^3.5.2",
-    "virtual-dom": "^2.1.1"
-  }
+    "virtual-dom": "^2.1.1",
+    "snyk": "^1.189.0"
+  },
+  "snyk": true
 }
